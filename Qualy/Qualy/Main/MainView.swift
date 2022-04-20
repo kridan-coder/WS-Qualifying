@@ -20,8 +20,12 @@ struct MainView: View {
   @State var errorText = ""
   @State var showAlert = false
   @State var currentTab = 0
+  
+  @State var isPlaying = false
     var body: some View {
-      
+      if isPlaying {
+        GameView()
+      } else {
         ZStack {
           
           Color("Background").ignoresSafeArea()
@@ -58,7 +62,7 @@ struct MainView: View {
                               .lineLimit(4)
                               .padding(.horizontal)
                             Button {
-                              
+                              isPlaying = true
                             } label: {
                               HStack {
                                 Spacer()
@@ -86,6 +90,7 @@ struct MainView: View {
                   .padding(.horizontal)
                 ScrollView(.vertical, showsIndicators: false) {
                   VStack(spacing: 15) {
+                    
                     ForEach(games) { game in
                       KFImage(URL(string: game.previewUrl))
                         //.aspectRatio(2, contentMode: .fill)
@@ -186,6 +191,8 @@ struct MainView: View {
         }
         
       }
+      }
+        
       
       
       
