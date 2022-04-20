@@ -98,7 +98,12 @@ struct ContentView: View {
     }
     let nickname = LoginForm(nickname: text)
     guard let url = URL(string: "http://62.113.103.113/api/auth/login") else { return }
-    AF.request(url, method: .post, parameters: nickname, encoder: JSONParameterEncoder.default).validate(statusCode: 200...200).response { result in
+    AF.request(url, method: .post, parameters: nickname, encoder: JSONParameterEncoder.default).response { result in
+      if result.response?.statusCode == 401 {
+        loginAF { value in
+        }
+        return
+      }
       switch result.result {
       case .success(let data):
         guard let data = data,

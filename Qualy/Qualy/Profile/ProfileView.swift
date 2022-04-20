@@ -26,7 +26,7 @@ struct ProfileView: View {
       }
       
       RoundedRectangle(cornerRadius: 8)
-        .frame(height: 70)
+        .frame(height: 65)
         .foregroundColor(Color("DarkViolet"))
         .overlay(alignment:.leading) {
           HStack {
@@ -53,8 +53,12 @@ struct ProfileView: View {
         .font(.custom("Manrope-Bold", size: 25))
         .foregroundColor(.white)
         .padding(.horizontal)
+      
       Image("Hardcode")
+        .scaledToFill()
+        .frame(width: nil)
         .padding(.horizontal)
+        
         .overlay(alignment: .leading) {
           VStack(alignment: .leading, spacing: 15) {
             Text("Super Memo")

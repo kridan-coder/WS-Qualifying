@@ -40,11 +40,11 @@ struct MainView: View {
                     getGames()
                   }
                 ScrollView(.horizontal, showsIndicators: false) {
-                  HStack {
+                  HStack(spacing: -10) {
                     ForEach(games) { game in
                       KFImage(URL(string: game.previewUrl))
                         //.aspectRatio(2, contentMode: .fill)
-                        .frame(width: 350)
+                        .frame(width: 340)
                         
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         
@@ -113,7 +113,7 @@ struct MainView: View {
                 
                
             } else if currentTab == 1 {
-              Text("123")
+              RatingView()
             } else if currentTab == 2 {
               ProfileView()
             }
@@ -201,6 +201,9 @@ struct MainView: View {
     AF.request(url, method: .get, headers: headers).response { response in
       if response.response?.statusCode == 401 {
         loginAF { value in
+          if value {
+            getGames()
+          }
         }
         return
       }
@@ -215,6 +218,9 @@ struct MainView: View {
           return
         }
         games = decoded
+        if let first = games.first {
+          UserDefaults().set(first.id, forKey: "game")
+        }
         print(decoded)
       case .failure(let error):
         errorText = error.localizedDescription
