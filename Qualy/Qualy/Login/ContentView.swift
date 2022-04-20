@@ -29,56 +29,63 @@ struct ContentView: View {
   @State var showErrorAlert = false
   @State var text = ""
   @State var errorText = ""
+  
+  @State var isOnLogin = true
     var body: some View {
-      ZStack {
-        Color("Background").ignoresSafeArea()
-        VStack {
-          Spacer()
-          Image("InitImage")
-          Text("MindGames")
-            .font(.custom("Manrope-Bold", size: 30))
-            .foregroundColor(Color("Violet"))
-            .padding(.bottom)
-          
-          VStack(alignment: .leading, spacing: 0) {
-            Text("Никнейм")
-              .font(.custom("Manrope-Light", size: 15))
+      if isOnLogin {
+        ZStack {
+          Color("Background").ignoresSafeArea()
+          VStack {
+            Spacer()
+            Image("InitImage")
+            Text("MindGames")
+              .font(.custom("Manrope-Bold", size: 38))
               .foregroundColor(Color("Violet"))
-              .padding(.horizontal)
-            TextField("Введите никнейм", text: $text)
-              .padding(10)
-              .font(.custom("Manrope-Light", size: 15))
-              .background(RoundedRectangle(cornerRadius: 8).foregroundColor(.white))
-              .padding(.horizontal)
-              .padding(.top, 3)
-              .padding(.bottom, 10)
+              .padding(.bottom)
             
-            Button {
-              login()
-            } label: {
-              HStack {
-                Spacer()
-                Text("Войти")
-                  .font(.custom("Manrope-Bold", size: 15))
-                  .foregroundColor(Color.black)
-                  
-                Spacer()
-                  
+            VStack(alignment: .leading, spacing: 0) {
+              Text("Никнейм")
+                .font(.custom("Manrope-Light", size: 15))
+                .foregroundColor(Color("Violet"))
+                .padding(.horizontal)
+              TextField("Введите никнейм", text: $text)
+                .padding(10)
+                .font(.custom("Manrope-Light", size: 15))
+                .background(RoundedRectangle(cornerRadius: 8).foregroundColor(.white))
+                .padding(.horizontal)
+                .padding(.top, 3)
+                .padding(.bottom, 16)
+              
+              Button {
+                login()
+              } label: {
+                HStack {
+                  Spacer()
+                  Text("Войти")
+                    .font(.custom("Manrope-Bold", size: 15))
+                    .foregroundColor(Color.black)
+                    
+                  Spacer()
+                    
+                }
+                .padding(12)
+                .background(RoundedRectangle(cornerRadius: 28).foregroundColor(Color("Cyan")))
+                .padding(.horizontal)
               }
-              .padding(12)
-              .background(RoundedRectangle(cornerRadius: 28).foregroundColor(Color("Cyan")))
-              .padding(.horizontal)
             }
-          }
-          .alert(errorText, isPresented: $showAlert) {
+            .alert(errorText, isPresented: $showAlert) {
+              
+            }
+            
+            
+            Spacer()
             
           }
-          
-          
-          Spacer()
-          
         }
+      } else {
+        MainView()
       }
+      
       
             
     }
@@ -100,7 +107,10 @@ struct ContentView: View {
           showAlert.toggle()
           return }
         UserDefaults().set(decoded.accessToken.token, forKey: "token")
+        
+        UserDefaults().set(nickname.nickname, forKey: "nickname")
         print(decoded)
+        isOnLogin = false
         
       case .failure(let error):
         errorText = error.localizedDescription
@@ -110,6 +120,8 @@ struct ContentView: View {
     
   }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
