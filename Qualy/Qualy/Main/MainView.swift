@@ -28,7 +28,7 @@ struct MainView: View {
             Text("Популярно")
               .font(.custom("Manrope-Bold", size: 40))
               .foregroundColor(.white)
-              .padding(.horizontal)
+              .padding()
               .alert(errorText, isPresented: $showAlert) {
                 
               }
@@ -78,7 +78,7 @@ struct MainView: View {
               .foregroundColor(.white)
               .padding(.horizontal)
             ScrollView(.vertical, showsIndicators: false) {
-              HStack {
+              VStack(spacing: 15) {
                 ForEach(games) { game in
                   KFImage(URL(string: game.previewUrl))
                     //.aspectRatio(2, contentMode: .fill)
@@ -98,7 +98,7 @@ struct MainView: View {
 
                       }
                     }
-                    .padding()
+                    .padding(.horizontal)
                 }
               }
             }
@@ -149,6 +149,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-      MainView(games: [ResponseGame(id: "95f01bd2-bfce-11ec-9d64-0242ac120002", title: "Найди лишнее", previewUrl: "https://gcdnb.pbrd.co/images/AGbXu4QPJiQ4.png")])
+      MainView(games: [ResponseGame(id: "95f01bd2-bfce-11ec-9d64-0242ac120002", title: "Найди лишнее", previewUrl: "https://gcdnb.pbrd.co/images/AGbXu4QPJiQ4.png"), ResponseGame(id: "95f01bd2-bfce-11ec-9d64-0242ac120002", title: "Найди лишнее", previewUrl: "https://gcdnb.pbrd.co/images/AGbXu4QPJiQ4.png")])
     }
 }
