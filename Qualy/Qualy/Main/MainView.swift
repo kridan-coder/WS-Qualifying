@@ -49,7 +49,7 @@ struct MainView: View {
                           .multilineTextAlignment(.leading)
                           .frame(width: 150)
                           .lineLimit(4)
-                          .padding()
+                          .padding(.horizontal)
                         Button {
                           
                         } label: {
@@ -67,6 +67,35 @@ struct MainView: View {
                           )
                           .padding(.horizontal)
                         }
+                      }
+                    }
+                    .padding()
+                }
+              }
+            }
+            Text("Все игры")
+              .font(.custom("Manrope-Bold", size: 40))
+              .foregroundColor(.white)
+              .padding(.horizontal)
+            ScrollView(.vertical, showsIndicators: false) {
+              HStack {
+                ForEach(games) { game in
+                  KFImage(URL(string: game.previewUrl))
+                    //.aspectRatio(2, contentMode: .fill)
+                    .frame(width: 350, height: 64)
+                    
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    
+                    .overlay(alignment: .leading) {
+                      VStack(alignment: .leading) {
+                        Text(game.title)
+                          .font(.custom("Manrope-Bold", size: 16))
+                          .foregroundColor(.white)
+                          .multilineTextAlignment(.leading)
+                          .frame(width: 150)
+                          .lineLimit(4)
+                          .padding(8)
+
                       }
                     }
                     .padding()
