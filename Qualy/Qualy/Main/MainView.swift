@@ -19,96 +19,175 @@ struct MainView: View {
   @State var games: [ResponseGame] = []
   @State var errorText = ""
   @State var showAlert = false
+  @State var currentTab = 0
     var body: some View {
-      ZStack {
-        
-        Color("Background").ignoresSafeArea()
-        GeometryReader {screen in
-          VStack(alignment: .leading) {
-            Text("Популярно")
-              .font(.custom("Manrope-Bold", size: 40))
-              .foregroundColor(.white)
-              .padding()
-              .alert(errorText, isPresented: $showAlert) {
-                
-              }
-            ScrollView(.horizontal, showsIndicators: false) {
-              HStack {
-                ForEach(games) { game in
-                  KFImage(URL(string: game.previewUrl))
-                    //.aspectRatio(2, contentMode: .fill)
-                    .frame(width: 350)
+      
+        ZStack {
+          
+          Color("Background").ignoresSafeArea()
+          GeometryReader {screen in
+            VStack(alignment: .leading) {
+            if currentTab == 0 {
+              
+                Text("Популярно")
+                  .font(.custom("Manrope-Bold", size: 40))
+                  .foregroundColor(.white)
+                  .padding()
+                  .alert(errorText, isPresented: $showAlert) {
                     
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    
-                    .overlay(alignment: .leading) {
-                      VStack(alignment: .leading) {
-                        Text(game.title)
-                          .font(.custom("Manrope-Bold", size: 20))
-                          .foregroundColor(.white)
-                          .multilineTextAlignment(.leading)
-                          .frame(width: 150)
-                          .lineLimit(4)
-                          .padding(.horizontal)
-                        Button {
-                          
-                        } label: {
-                          HStack {
-                            Spacer()
-                            Text("Играть")
-                              .font(.custom("Manrope-Bold", size: 15))
+                  }
+                  .onAppear {
+                    getGames()
+                  }
+                ScrollView(.horizontal, showsIndicators: false) {
+                  HStack {
+                    ForEach(games) { game in
+                      KFImage(URL(string: game.previewUrl))
+                        //.aspectRatio(2, contentMode: .fill)
+                        .frame(width: 350)
+                        
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        .overlay(alignment: .leading) {
+                          VStack(alignment: .leading) {
+                            Text(game.title)
+                              .font(.custom("Manrope-Bold", size: 20))
                               .foregroundColor(.white)
-                            Spacer()
+                              .multilineTextAlignment(.leading)
+                              .frame(width: 150)
+                              .lineLimit(4)
+                              .padding(.horizontal)
+                            Button {
+                              
+                            } label: {
+                              HStack {
+                                Spacer()
+                                Text("Играть")
+                                  .font(.custom("Manrope-Bold", size: 15))
+                                  .foregroundColor(.white)
+                                Spacer()
+                              }
+                              .frame(width: 80, height: 30)
+                              .background(RoundedRectangle(cornerRadius: 4)
+                                .foregroundColor(.white)
+                                .opacity(0.4)
+                              )
+                              .padding(.horizontal)
+                            }
                           }
-                          .frame(width: 80, height: 30)
-                          .background(RoundedRectangle(cornerRadius: 4)
-                            .foregroundColor(.white)
-                            .opacity(0.4)
-                          )
-                          .padding(.horizontal)
                         }
-                      }
+                        .padding()
                     }
-                    .padding()
+                  }
                 }
-              }
-            }
-            Text("Все игры")
-              .font(.custom("Manrope-Bold", size: 40))
-              .foregroundColor(.white)
-              .padding(.horizontal)
-            ScrollView(.vertical, showsIndicators: false) {
-              VStack(spacing: 15) {
-                ForEach(games) { game in
-                  KFImage(URL(string: game.previewUrl))
-                    //.aspectRatio(2, contentMode: .fill)
-                    .frame(width: 350, height: 64)
-                    
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    
-                    .overlay(alignment: .leading) {
-                      VStack(alignment: .leading) {
-                        Text(game.title)
-                          .font(.custom("Manrope-Bold", size: 16))
-                          .foregroundColor(.white)
-                          .multilineTextAlignment(.leading)
-                          .frame(width: 150)
-                          .lineLimit(4)
-                          .padding(8)
+                Text("Все игры")
+                  .font(.custom("Manrope-Bold", size: 40))
+                  .foregroundColor(.white)
+                  .padding(.horizontal)
+                ScrollView(.vertical, showsIndicators: false) {
+                  VStack(spacing: 15) {
+                    ForEach(games) { game in
+                      KFImage(URL(string: game.previewUrl))
+                        //.aspectRatio(2, contentMode: .fill)
+                        .frame(width: 350, height: 64)
+                        
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        .overlay(alignment: .leading) {
+                          VStack(alignment: .leading) {
+                            Text(game.title)
+                              .font(.custom("Manrope-Bold", size: 16))
+                              .foregroundColor(.white)
+                              .multilineTextAlignment(.leading)
+                              .frame(width: 150)
+                              .lineLimit(4)
+                              .padding(8)
 
-                      }
+                          }
+                        }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                  }
                 }
+                
+                
+               
+            } else if currentTab == 1 {
+              Text("123")
+            } else if currentTab == 2 {
+              ProfileView()
+            }
+            
+            Spacer()
+            VStack(spacing: 0) {
+              Rectangle()
+                .foregroundColor(Color("Selection"))
+                .frame(width: nil, height: 1)
+                .padding(.bottom, 7)
+              HStack {
+                Spacer()
+                VStack(spacing: 3) {
+                  
+                  Button {
+                    currentTab = 0
+                  } label: {
+                    Image("Main")
+                      .renderingMode(.template)
+                      .foregroundColor(currentTab == 0 ? Color("Cyan") : Color("Selection"))
+                    
+                }
+                  Text("Главная")
+                    .font(.custom("Manrope-Regular", size: 12))
+                    .foregroundColor(currentTab == 0 ? Color("Cyan") : Color("Selection"))
+                  
+                }
+                Spacer()
+                VStack(spacing: 3) {
+                  
+                  Button {
+                    currentTab = 1
+                  } label: {
+                    Image("Rating")
+                      .renderingMode(.template)
+                      .foregroundColor(currentTab == 1 ? Color("Cyan") : Color("Selection"))
+                    
+                }
+                  Text("Рейтинг")
+                    .font(.custom("Manrope-Regular", size: 12))
+                    .foregroundColor(currentTab == 1 ? Color("Cyan") : Color("Selection"))
+                  
+                }
+                
+                Spacer()
+                
+                VStack(spacing: 3) {
+                  
+                  Button {
+                    currentTab = 2
+                  } label: {
+                    Image("Profile")
+                      .renderingMode(.template)
+                      .foregroundColor(currentTab == 2 ? Color("Cyan") : Color("Selection"))
+                    
+                }
+                  Text("Профиль")
+                    .font(.custom("Manrope-Regular", size: 12))
+                    .foregroundColor(currentTab == 2 ? Color("Cyan") : Color("Selection"))
+                  
+                }
+                
+                Spacer()
               }
             }
+              
+            
           }
+          
         }
         
       }
-      .onAppear {
-        getGames()
-      }
+      
+      
       
     }
   
