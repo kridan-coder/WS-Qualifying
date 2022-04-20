@@ -18,6 +18,7 @@
 		3AF34B5C281050B3007AAC9B /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF34B55281050B3007AAC9B /* Manrope-Regular.ttf */; };
 		3AF34B5D281050B3007AAC9B /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF34B56281050B3007AAC9B /* Manrope-Bold.ttf */; };
 		3AF34B5E281050B3007AAC9B /* Manrope-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF34B57281050B3007AAC9B /* Manrope-ExtraBold.ttf */; };
+		857C82A2168DB33E8BC8049A /* Pods_Qualy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9614FA4DB3B1B1EE694E342 /* Pods_Qualy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		3AF34B56281050B3007AAC9B /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
 		3AF34B57281050B3007AAC9B /* Manrope-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3AF34B5F281050BF007AAC9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		563B02A92DA4348AB5C40447 /* Pods-Qualy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualy.debug.xcconfig"; path = "Target Support Files/Pods-Qualy/Pods-Qualy.debug.xcconfig"; sourceTree = "<group>"; };
+		74A8DDA7C0A6209EFA3FCFF0 /* Pods-Qualy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qualy.release.xcconfig"; path = "Target Support Files/Pods-Qualy/Pods-Qualy.release.xcconfig"; sourceTree = "<group>"; };
+		E9614FA4DB3B1B1EE694E342 /* Pods_Qualy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qualy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857C82A2168DB33E8BC8049A /* Pods_Qualy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 			children = (
 				3AF34B412810507B007AAC9B /* Qualy */,
 				3AF34B402810507B007AAC9B /* Products */,
+				7F188C59D3A37BF56C83C420 /* Pods */,
+				D6E35DD2DAEEBC69FFFFD37F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +105,24 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		7F188C59D3A37BF56C83C420 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				563B02A92DA4348AB5C40447 /* Pods-Qualy.debug.xcconfig */,
+				74A8DDA7C0A6209EFA3FCFF0 /* Pods-Qualy.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D6E35DD2DAEEBC69FFFFD37F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9614FA4DB3B1B1EE694E342 /* Pods_Qualy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AF34B4D2810507C007AAC9B /* Build configuration list for PBXNativeTarget "Qualy" */;
 			buildPhases = (
+				3CAC926F2C110AE99768F9CD /* [CP] Check Pods Manifest.lock */,
 				3AF34B3B2810507B007AAC9B /* Sources */,
 				3AF34B3C2810507B007AAC9B /* Frameworks */,
 				3AF34B3D2810507B007AAC9B /* Resources */,
+				0F5839C2B7B780F7C1002CAF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,6 +196,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F5839C2B7B780F7C1002CAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Qualy/Pods-Qualy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Qualy/Pods-Qualy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Qualy/Pods-Qualy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CAC926F2C110AE99768F9CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Qualy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3AF34B3B2810507B007AAC9B /* Sources */ = {
@@ -299,6 +368,7 @@
 		};
 		3AF34B4E2810507C007AAC9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 563B02A92DA4348AB5C40447 /* Pods-Qualy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -329,6 +399,7 @@
 		};
 		3AF34B4F2810507C007AAC9B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74A8DDA7C0A6209EFA3FCFF0 /* Pods-Qualy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
