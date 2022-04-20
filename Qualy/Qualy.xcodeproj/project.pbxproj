@@ -73,10 +73,11 @@
 		3AF34B412810507B007AAC9B /* Qualy */ = {
 			isa = PBXGroup;
 			children = (
+				3AF34B61281059A0007AAC9B /* Main */,
+				3AF34B60281051D7007AAC9B /* Login */,
 				3AF34B5F281050BF007AAC9B /* Info.plist */,
 				3AF34B50281050A8007AAC9B /* Fonts */,
 				3AF34B422810507B007AAC9B /* QualyApp.swift */,
-				3AF34B442810507B007AAC9B /* ContentView.swift */,
 				3AF34B462810507C007AAC9B /* Assets.xcassets */,
 				3AF34B482810507C007AAC9B /* Preview Content */,
 			);
@@ -105,13 +106,27 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		3AF34B60281051D7007AAC9B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3AF34B442810507B007AAC9B /* ContentView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3AF34B61281059A0007AAC9B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		7F188C59D3A37BF56C83C420 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				563B02A92DA4348AB5C40447 /* Pods-Qualy.debug.xcconfig */,
 				74A8DDA7C0A6209EFA3FCFF0 /* Pods-Qualy.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
